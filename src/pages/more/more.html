@@ -25,14 +25,17 @@
   </div>
 
   <div *ngIf="logined">
-      <ion-card>
-          <ion-card-header text-center>
-            Logined
-          </ion-card-header>
-          <ion-card-content text-center>
-              Logined
-          </ion-card-content>
-      </ion-card>
+      <ion-list class="marginTop">
+        <button ion-item (click)="gotoUserPage()">
+          <ion-avatar item-start>
+            <img src="{{avatar}}" alt="avatar">
+          </ion-avatar>
+          <h2>{{userInfo.UserNickName}}</h2>
+          <p>Detail/Update information</p>
+        </button>
+
+      </ion-list>
+     
   </div>
   
 </ion-content>

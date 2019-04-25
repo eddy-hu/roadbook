@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-import { Storage } from '@ionic/storage'
+import { Component } from "@angular/core";
+import { NavController, NavParams, ModalController, LoadingController, ToastController } from "ionic-angular";
+import { LoginPage } from "../login/login";
+import { UserPage } from "../user/user";
+import { Storage } from "@ionic/storage";
+import { BaseUI } from "../../common/baseui";
+import { RestProvider } from '../../providers/rest/rest';
 /**
  * Generated class for the MorePage page.
  *
@@ -10,41 +13,63 @@ import { Storage } from '@ionic/storage'
  */
 
 @Component({
-  selector: 'page-more',
-  templateUrl: 'more.html',
+  selector: "page-more",
+  templateUrl: "more.html"
 })
-export class MorePage {
-
+export class MorePage extends BaseUI {
   public notLogin: boolean = true;
   public logined: boolean = false;
+  avatar: string;
+  userInfo: string[];
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
     public navParams: NavParams,
+    public rest: RestProvider,
     public modalCtrl: ModalController,
-    public storage: Storage,
-    ) {
+    public storage: Storage
+  ) {
+    super();
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.loadUserPage();
   }
 
-  loadUserPage(){
-    this.storage.get('UserId').then((val)=>{
-      if(val!=null){
-        this.notLogin=false;
-        this.logined=true;
-      }else{
-        this.notLogin=true;
-        this.logined=false;
+  loadUserPage() {
+    this.storage.get("UserId").then(val => {
+      if (val != null) {
+        //load user info
+        var loading = super.showLoading(this.loadingCtrl,"Loading...");
+        this.rest.getUserInfo(val)
+          .subscribe(
+            userinfo=>{
+              this.userInfo=userinfo;
+              this.avatar=userinfo["UserHeadface"] + "?"+ (new Date()).valueOf();
+              this.notLogin = false;
+              this.logined = true;
+              loading.dismiss();
+            }
+          );
+      } else {
+        this.notLogin = true;
+        this.logined = false;
       }
-    })
+    });
   }
 
-  showModal(){
+  showModal() {
     let modal = this.modalCtrl.create(LoginPage);
+    modal.onDidDismiss(()=>{
+      this.loadUserPage();
+    });
     modal.present();
+  }
+
+  gotoUserPage(){
+    this.navCtrl.push(UserPage);
   }
 
 }

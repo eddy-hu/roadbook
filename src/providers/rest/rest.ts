@@ -50,12 +50,12 @@ export class RestProvider {
       this.apiUrlLogin + "?mobile=" + mobile + "&password=" + password
     );
   }
-/**
- * 
- * @param mobile 
- * @param nickname 
- * @param password 
- */
+  /**
+   *
+   * @param mobile
+   * @param nickname
+   * @param password
+   */
   register(mobile, nickname, password): Observable<string[]> {
     return this.getUrlReturn(
       this.apiUrlRegister +
@@ -79,6 +79,16 @@ export class RestProvider {
   loginWithMd5(mobile, password): Observable<string[]> {
     return this.getUrlReturn(
       this.apiUrlLoginWithMd5 + "?mobile=" + mobile + "&password=" + password
+    );
+  }
+
+  getUserInfo(userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUserInfo + "?userid=" + userId);
+  }
+
+  updateNickName(userId, nickname): Observable<string[]> {
+    return this.getUrlReturn(
+      this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname
     );
   }
 
