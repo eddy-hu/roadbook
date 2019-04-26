@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { UserPage } from '../pages/user/user';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AvatarPage } from '../pages/avatar/avatar';
 import { HttpModule } from '@angular/http'
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,6 +32,7 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPage,
     RegisterPage,
     UserPage,
+    AvatarPage,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPage,
     RegisterPage,
     UserPage,
+    AvatarPage,
   ],
   providers: [
     StatusBar,

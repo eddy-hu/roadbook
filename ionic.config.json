@@ -1,5 +1,7 @@
 {
   "name": "roadbook",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

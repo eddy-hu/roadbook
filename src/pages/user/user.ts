@@ -9,12 +9,8 @@ import {
 import { Storage } from "@ionic/storage";
 import { BaseUI } from "../../common/baseui";
 import { RestProvider } from "../../providers/rest/rest";
-/**
- * Generated class for the UserPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AvatarPage } from "../avatar/avatar";
+
 @Component({
   selector: "page-user",
   templateUrl: "user.html"
@@ -70,6 +66,8 @@ export class UserPage extends BaseUI {
             loading.dismiss();
             super.showToast(this.toastCtrl, f["StatusContent"]);
           }
+
+          
         });
       }
     });
@@ -78,5 +76,8 @@ export class UserPage extends BaseUI {
   logout(){
     this.storage.remove("UserId");
     this.viewCtrl.dismiss();
+  }
+  gotoAvatar(){
+    this.navCtrl.push(AvatarPage);
   }
 }
