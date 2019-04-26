@@ -66,7 +66,6 @@ export class UserPage extends BaseUI {
             loading.dismiss();
             super.showToast(this.toastCtrl, f["StatusContent"]);
           }
-
           
         });
       }
