@@ -1,7 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-searchbar placeholder="Search: How to use Roadbook"></ion-searchbar>
-    <ion-icon (tap)="gotoQuestion()" name="text" class="top-header-message_icon"></ion-icon>
+    <ion-icon
+      (tap)="gotoChat()"
+      name="text"
+      class="top-header-message_icon"
+    ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -15,13 +19,13 @@
           </div>
         </ion-col>
         <ion-col col-4 text-center>
-          <div >
+          <div>
             <span style="float:left; color:#dddddd;">|</span>
-          <ion-icon name="albums"> Answer</ion-icon>
-        </div>
+            <ion-icon name="albums"> Answer</ion-icon>
+          </div>
         </ion-col>
         <ion-col col-4 text-center>
-            <div (tap)="gotoQuestion()">
+          <div (tap)="gotoQuestion()">
             <span style="float:left; color:#dddddd;">|</span>
             <ion-icon name="share-alt"> Share</ion-icon>
           </div>
@@ -29,18 +33,27 @@
       </ion-row>
     </ion-grid>
   </div>
-  <ion-card>
+  <ion-card *ngFor="let item of feeds">
     <ion-item>
       <ion-avatar item-start>
-        <img src="" alt="">
+        <img src="{{item.HeadFace}}" />
       </ion-avatar>
-      <p>XXX answered
+      <p>
+        {{item.UserNickName}} answered
         <ion-icon class="more_button" name="more"> </ion-icon>
       </p>
     </ion-item>
-    <h2>Question title</h2>
+    <h2>{{item.ContentTitle}}</h2>
     <ion-card-content>
-      <p>question content</p>
+      <p>{{item.ContentSummary}}</p>
     </ion-card-content>
+    <ion-row>
+      <ion-col col-8 center text-left>
+        <ion-note>
+        {{item.LikeCount}}&nbsp;Liked&nbsp;&nbsp;·&nbsp;&nbsp;{{item.CommentCount}}&nbsp;Replied&nbsp;&nbsp;·&nbsp;&nbsp;Subscribe
+        </ion-note>
+      </ion-col>
+      <ion-col col-4> </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>

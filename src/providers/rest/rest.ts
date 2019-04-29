@@ -98,6 +98,13 @@ export class RestProvider {
     );
   }
 
+  getFeeds(): Observable<string[]>{
+    return this.getUrlReturn(
+      this.apiUrlFeeds
+    )
+
+  }
+
   /**
    *
    * @Parry

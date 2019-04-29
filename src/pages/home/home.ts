@@ -1,18 +1,30 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, Tabs, LoadingController } from 'ionic-angular';
 import { QuestionPage } from '../question/question';
+import { BaseUI } from '../../common/baseui';
+import { RestProvider } from '../../providers/rest/rest';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage extends BaseUI{
+
+  feeds: string[];
+  errorMessage: string;
 
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    ) {
+    public loadingCtrl: LoadingController,
+    public rest: RestProvider,
 
+    ) {
+      super();
+  }
+
+  ionViewDidLoad(){
+    this.getFeeds();
   }
 
   gotoQuestion(){
@@ -20,6 +32,24 @@ export class HomePage {
     modal.present();
   }
 
+  gotoChat(){
+    this.selectTab(2);
+  }
 
+  selectTab(index: number){
+    let t: Tabs = this.navCtrl.parent;
+    t.select(index);
+  }
+
+  getFeeds(){
+    let loading = super.showLoading(this.loadingCtrl,"Loading...");
+    loading.present();
+    this.rest.getFeeds()
+    .subscribe(res=>{
+      this.feeds=res;
+      loading.dismiss();
+    },
+    error=>this.errorMessage = <any>error);
+  }
 
 }
