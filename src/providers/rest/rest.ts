@@ -92,6 +92,12 @@ export class RestProvider {
     );
   }
 
+  saveQuestion(userId,title,content): Observable<string[]>{
+    return this.getUrlReturn(
+      this.apiUrlQuestionSave + "?userid=" +userId +"&title="+title+"&content="+content
+    );
+  }
+
   /**
    *
    * @Parry

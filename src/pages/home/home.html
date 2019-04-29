@@ -1,17 +1,46 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search: How to use Roadbook"></ion-searchbar>
+    <ion-icon (tap)="gotoQuestion()" name="text" class="top-header-message_icon"></ion-icon>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+  <div class="floatMenu">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 text-center>
+          <div (tap)="gotoQuestion()">
+            <ion-icon name="create"> Ask</ion-icon>
+          </div>
+        </ion-col>
+        <ion-col col-4 text-center>
+          <div >
+            <span style="float:left; color:#dddddd;">|</span>
+          <ion-icon name="albums"> Answer</ion-icon>
+        </div>
+        </ion-col>
+        <ion-col col-4 text-center>
+            <div (tap)="gotoQuestion()">
+            <span style="float:left; color:#dddddd;">|</span>
+            <ion-icon name="share-alt"> Share</ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="" alt="">
+      </ion-avatar>
+      <p>XXX answered
+        <ion-icon class="more_button" name="more"> </ion-icon>
+      </p>
+    </ion-item>
+    <h2>Question title</h2>
+    <ion-card-content>
+      <p>question content</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

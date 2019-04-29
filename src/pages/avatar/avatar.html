@@ -12,7 +12,7 @@
 
 <ion-content padding>
   <img src="{{pathForImage(lastImage)}}" style="width: 100%;" [hidden]="lastImage === null">
-  <h3>Please upload an image</h3>
+  <h3 [hidden]="lastImage !== null">Please upload an image</h3>
 </ion-content>
 
 <ion-footer>
@@ -20,7 +20,7 @@
       <ion-buttons>
         <button ion-button icon-left (click)="presentActionSheet()">
           <ion-icon name="camera"></ion-icon>Choose
-        </button>
+        </button> 
         <button ion-button icon-left  (click)="uploadImange()" [disabled]="lastImage ===null">
             <ion-icon name="cloud-upload"></ion-icon>Upload
           </button>

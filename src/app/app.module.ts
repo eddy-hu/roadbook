@@ -12,7 +12,6 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { UserPage } from '../pages/user/user';
 import { TabsPage } from '../pages/tabs/tabs';
-import { AvatarPage } from '../pages/avatar/avatar';
 import { HttpModule } from '@angular/http'
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,23 +23,34 @@ import { Camera } from "@ionic-native/camera/ngx";
 import { File } from "@ionic-native/file/ngx";
 import { Transfer } from "@ionic-native/transfer";
 import { FilePath } from "@ionic-native/file-path/ngx";
+import { AvatarPageModule } from '../pages/avatar/avatar.module';
+import { ChatPageModule } from '../pages/chat/chat.module';
+import { DiscoveryPageModule } from '../pages/discovery/discovery.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { MorePageModule } from '../pages/more/more.module';
+import { RegisterPageModule } from '../pages/register/register.module';
+import { UserPageModule } from '../pages/user/user.module';
+import { NotificationPageModule } from '../pages/notification/notification.module';
+import { QuestionPageModule } from '../pages/question/question.module';
+import { QuestionPage } from '../pages/question/question';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    DiscoveryPage,
-    ChatPage,
-    NotificationPage,
-    MorePage,
-    LoginPage,
     TabsPage,
-    RegisterPage,
-    UserPage,
-    AvatarPage,
   ],
   imports: [
     BrowserModule,
+    AvatarPageModule,
+    DiscoveryPageModule,
+    ChatPageModule,
+    LoginPageModule,
+    MorePageModule,
+    RegisterPageModule,
+    NotificationPageModule,
+    UserPageModule,
+    QuestionPageModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
@@ -57,7 +67,7 @@ import { FilePath } from "@ionic-native/file-path/ngx";
     TabsPage,
     RegisterPage,
     UserPage,
-    AvatarPage,
+    QuestionPage,
   ],
   providers: [
     StatusBar,

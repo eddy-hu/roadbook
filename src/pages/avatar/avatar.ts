@@ -7,6 +7,7 @@ import {
   ToastController,
   LoadingController,
   Platform,
+  normalizeURL,
   ViewController
 } from "ionic-angular";
 import { Storage } from "@ionic/storage";
@@ -143,11 +144,11 @@ export class AvatarPage extends BaseUI {
     return new Date().getTime() + ".jpg";
   }
 
-  pathForImage(img) {
+  public pathForImage(img) {
     if (img === null) {
       return "";
     } else {
-      return cordova.file.dataDirectory + img;
+      return normalizeURL(cordova.file.dataDirectory + img);
     }
   }
 
