@@ -35,7 +35,13 @@ export class RestProvider {
     "https://imoocqa.gugujiankong.com/api/question/list?index=1&number=10";
   private apiUrlGetQuestion =
     "https://imoocqa.gugujiankong.com/api/question/get";
+  private apiUrlGetQuestionWithUser =
+    "https://imoocqa.gugujiankong.com/api/question/getwithuser";
+
   private apiUrlAnswer = "https://imoocqa.gugujiankong.com/api/question/answer";
+
+  private apiUrlSaveFavourite =
+    "https://imoocqa.gugujiankong.com/api/question/savefavourite";
 
   /**
    *
@@ -92,17 +98,44 @@ export class RestProvider {
     );
   }
 
-  saveQuestion(userId,title,content): Observable<string[]>{
+  saveQuestion(userId, title, content): Observable<string[]> {
     return this.getUrlReturn(
-      this.apiUrlQuestionSave + "?userid=" +userId +"&title="+title+"&content="+content
+      this.apiUrlQuestionSave +
+        "?userid=" +
+        userId +
+        "&title=" +
+        title +
+        "&content=" +
+        content
     );
   }
 
-  getFeeds(): Observable<string[]>{
-    return this.getUrlReturn(
-      this.apiUrlFeeds
-    )
+  getFeeds(): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlFeeds);
+  }
 
+  /**
+   * get detail of the question
+   * @param id
+   */
+  getQuestion(id): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlGetQuestion + "?id=" + id);
+  }
+
+  getQuestionWithUser(questionId, userId): Observable<string[]> {
+    return this.getUrlReturn(
+      this.apiUrlGetQuestionWithUser + "?id=" + questionId + "&userid=" + userId
+    );
+  }
+
+  saveFavourite(questionId, userId): Observable<string[]> {
+    return this.getUrlReturn(
+      this.apiUrlSaveFavourite +
+        "?questionid=" +
+        questionId +
+        "&userid=" +
+        userId
+    );
   }
 
   /**

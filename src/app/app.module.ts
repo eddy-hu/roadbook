@@ -33,6 +33,8 @@ import { UserPageModule } from '../pages/user/user.module';
 import { NotificationPageModule } from '../pages/notification/notification.module';
 import { QuestionPageModule } from '../pages/question/question.module';
 import { QuestionPage } from '../pages/question/question';
+import { DetailsPageModule } from '../pages/details/details.module';
+import { DetailsPage } from '../pages/details/details';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { QuestionPage } from '../pages/question/question';
     NotificationPageModule,
     UserPageModule,
     QuestionPageModule,
+    DetailsPageModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
@@ -68,6 +71,7 @@ import { QuestionPage } from '../pages/question/question';
     RegisterPage,
     UserPage,
     QuestionPage,
+    DetailsPage,
   ],
   providers: [
     StatusBar,
