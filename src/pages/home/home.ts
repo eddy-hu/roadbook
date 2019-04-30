@@ -48,7 +48,9 @@ export class HomePage extends BaseUI{
     this.rest.getFeeds()
     .subscribe(res=>{
       this.feeds=res;
-      loading.dismiss();
+      if(loading){
+        loading.dismiss();
+      }
     },
     error=>this.errorMessage = <any>error);
   }

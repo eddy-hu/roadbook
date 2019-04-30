@@ -68,10 +68,14 @@ export class RegisterPage extends BaseUI {
         f => {
           if (f["Status"] == "OK") {
             super.showToast(this.toastCtrl, "Sign up successfully");
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
             this.dismiss();
           } else {
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
             super.showToast(this.toastCtrl, f["StatusContent"]);
           }
         },

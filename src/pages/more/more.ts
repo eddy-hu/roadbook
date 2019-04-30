@@ -50,7 +50,9 @@ export class MorePage extends BaseUI {
               this.avatar=userinfo["UserHeadface"] + "?"+ (new Date()).valueOf();
               this.notLogin = false;
               this.logined = true;
-              loading.dismiss();
+              if(loading){
+                loading.dismiss();
+              }
             }
           );
       } else {

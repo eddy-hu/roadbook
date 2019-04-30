@@ -42,11 +42,15 @@ export class LoginPage extends BaseUI{
           if(f["Status"]=="OK"){
             //Login successfully
             this.storage.set('UserId',f["UserId"]);
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
             this.dismiss();
           }else{
             //login failed
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
             super.showToast(this.toastCtrl,f["StatusContent"]);
           }
         },

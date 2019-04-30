@@ -46,7 +46,9 @@ export class UserPage extends BaseUI {
           userinfo => {
             this.nickname = userinfo["UserNickName"];
             this.avatar = userinfo["UserHeadface"] + "?" + new Date().valueOf();
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
           },
           error => (this.errorMessage = <any>error)
         );
@@ -60,10 +62,14 @@ export class UserPage extends BaseUI {
         var loading = super.showLoading(this.loadingCtrl, "Updating...");
         this.rest.updateNickName(val, this.nickname).subscribe(f => {
           if (f["Status"] == "OK") {
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
             super.showToast(this.toastCtrl, "Nick name has been updated");
           } else {
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
             super.showToast(this.toastCtrl, f["StatusContent"]);
           }
           

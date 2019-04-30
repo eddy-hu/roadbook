@@ -138,6 +138,12 @@ export class RestProvider {
     );
   }
 
+  answer(userId,questionId,content): Observable<string[]>{
+    return this.getUrlReturn(
+      this.apiUrlAnswer+"?userid="+userId+"&questionid="+questionId+"&content="+content
+    );
+  }
+
   /**
    *
    * @Parry

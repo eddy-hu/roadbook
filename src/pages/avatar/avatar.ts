@@ -168,13 +168,17 @@ export class AvatarPage extends BaseUI {
     var loading = super.showLoading(this.loadingCtrl, "Uploading...");
 
     fileTransfer.upload(targetPath, url, options).then(data => {
-      loading.dismiss();
+      if(loading){
+        loading.dismiss();
+      }
       super.showToast(this.toastCtrl, "Uploaded successfully");
       setTimeout(() => {
         this.viewCtrl.dismiss();
       }, 3000);
     },err=>{
-      loading.dismiss();
+      if(loading){
+        loading.dismiss();
+      }
       super.showToast(this.toastCtrl, "Upload failed");
     });
   }

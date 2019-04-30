@@ -3,11 +3,13 @@ import {
   NavController,
   NavParams,
   LoadingController,
-  ToastController
+  ToastController,
+  ModalController
 } from "ionic-angular";
 import { BaseUI } from "../../common/baseui";
 import { RestProvider } from "../../providers/rest/rest";
 import { Storage } from "@ionic/storage";
+import { AnswerPage } from "../answer/answer";
 
 @Component({
   selector: "page-details",
@@ -28,6 +30,7 @@ export class DetailsPage extends BaseUI {
     public rest: RestProvider,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
     public storage: Storage
   ) {
     super();
@@ -49,7 +52,9 @@ export class DetailsPage extends BaseUI {
             this.answers = res["Answers"];
             this.isFavourite = res["IsFavourite"];
             this.isMyQuestion = (res["OwnUserId"] == val);
-            loading.dismiss();
+            if(loading){
+              loading.dismiss();
+            }
           },
           error => (this.errorMessage = <any>error)
         );
@@ -62,7 +67,9 @@ export class DetailsPage extends BaseUI {
     this.rest.saveFavourite(this.id, this.userId).subscribe(
       res => {
         if (res["Status"] == "OK") {
-          loading.dismiss();
+          if(loading){
+            loading.dismiss();
+          }
           super.showToast(
             this.toastCtrl,
             this.isFavourite
@@ -74,5 +81,14 @@ export class DetailsPage extends BaseUI {
       },
       error => (this.errorMessage = <any>error)
     );
+  }
+
+  showAnswerPage(){
+    let modal = this.modalCtrl.create(AnswerPage,{"id": this.id});
+    //refresh page after close the modal
+    modal.onDidDismiss(()=>{
+      this.loadQuestion(this.id);
+    });
+    modal.present();
   }
 }

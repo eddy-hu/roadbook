@@ -35,6 +35,8 @@ import { QuestionPageModule } from '../pages/question/question.module';
 import { QuestionPage } from '../pages/question/question';
 import { DetailsPageModule } from '../pages/details/details.module';
 import { DetailsPage } from '../pages/details/details';
+import { AnswerPageModule } from '../pages/answer/answer.module';
+import { AnswerPage } from '../pages/answer/answer';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { DetailsPage } from '../pages/details/details';
     UserPageModule,
     QuestionPageModule,
     DetailsPageModule,
+    AnswerPageModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
@@ -72,6 +75,7 @@ import { DetailsPage } from '../pages/details/details';
     UserPage,
     QuestionPage,
     DetailsPage,
+    AnswerPage,
   ],
   providers: [
     StatusBar,

@@ -10,7 +10,7 @@
     <ion-card-content>
         {{question?.Content}}
       <p>{{question?.LikeCount}}&nbsp;subscribed&nbsp;&nbsp;{{question?.CommentCount}}&nbsp;answered</p>
-      <button ion-button small [disabled]="isMyQuestion">&nbsp;Answer</button>
+      <button ion-button small [disabled]="isMyQuestion" (click)="showAnswerPage()">&nbsp;Answer</button>
       <button ion-button small color="danger" (click)="saveFavourite()">&nbsp;{{isFavourite ? 'Unsubscribe': 'Subscribe'}}</button>
       
     </ion-card-content>
