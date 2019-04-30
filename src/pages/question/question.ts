@@ -47,10 +47,14 @@ export class QuestionPage extends BaseUI {
         this.rest.saveQuestion(val, this.title, this.content).subscribe(
           f => {
             if (f["Status"] == "OK") {
-              loading.dismissAll();
+              if(loading){
+                loading.dismissAll();
+              }
               this.dismiss();
             } else {
-              loading.dismissAll();
+              if(loading){
+                loading.dismissAll();
+              }
               super.showToast(this.toastCtrl, f["StatusContent"]);
             }
           },

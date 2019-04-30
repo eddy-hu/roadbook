@@ -43,10 +43,14 @@ export class AnswerPage extends BaseUI{
         this.rest.answer(val, this.id, this.content).subscribe(
           f => {
             if (f["Status"] == "OK") {
-              loading.dismissAll();
+              if(loading){
+                loading.dismissAll();
+              }
               this.dismiss();
             } else {
-              loading.dismissAll();
+              if(loading){
+                loading.dismissAll();
+              }
               super.showToast(this.toastCtrl, f["StatusContent"]);
             }
           },

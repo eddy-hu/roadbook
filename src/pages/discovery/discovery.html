@@ -6,10 +6,42 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>discovery</ion-title>
+    <ion-title>Discovery</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+    refreshingSpinner="circles" 
+    refreshingText="Loading..."
+    pullingText="Refresh"
+    pullingIcon="arrow-down"
+    >
 
+    </ion-refresher-content>
+  </ion-refresher>
+    <ion-card *ngFor="let item of questions" (click)="gotoDetails(item.IdentityId)">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{item.HeadFace}}"  />
+          </ion-avatar>
+          <p>
+              {{item.UserNickName}} asked
+            <ion-icon class="more_button" name="more"> </ion-icon>
+          </p>
+        </ion-item>
+        <h2>{{item.ContentTitle}}</h2>
+        <ion-card-content>
+          <p>{{item.ContentSummary}}</p>
+        </ion-card-content>
+        <ion-row>
+          <ion-col col-8 center text-left>
+            <ion-note>
+            {{item.LikeCount}}&nbsp;Liked&nbsp;&nbsp;·&nbsp;&nbsp;{{item.CommentCount}}&nbsp;Replied&nbsp;&nbsp;·&nbsp;&nbsp;Subscribe
+            </ion-note>
+          </ion-col>
+          <ion-col col-4> </ion-col>
+        </ion-row>
+      </ion-card>
 </ion-content>
