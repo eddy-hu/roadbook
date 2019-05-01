@@ -44,12 +44,14 @@ export class LoginPage extends BaseUI{
             this.storage.set('UserId',f["UserId"]);
             if(loading){
               loading.dismiss();
+              loading=null;
             }
             this.dismiss();
           }else{
             //login failed
             if(loading){
               loading.dismiss();
+              loading=null;
             }
             super.showToast(this.toastCtrl,f["StatusContent"]);
           }

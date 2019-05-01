@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ chartUserName }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="message-wrap">
+
+    <div class="message" 
+    *ngFor="let item of messageList"
+    [class.left]="item.userId === chatUserId"
+    [class.right]="item.userId === userId"
+    >
+      <img [src]="item.userImgUrl" class="user-img" />
+      <div class="msg-detail">
+        <div class="msg-info">
+          <p>{{item.userName}}&nbsp;{{item.time}}</p>
+        </div>
+        <div class="msg-content">
+          <p class="line-breaker">{{item.message}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer no-border [style.height]="isOpenEmojiPicker? '255px' : '55px'">
+<ion-grid class="input-wrap">
+  <ion-row>
+    <ion-col col-2>
+      <button ion-button clear ion-only item-right (click)="switchEmojiPicker()">
+        <ion-icon name="md-happy"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-8>
+      <ion-textarea 
+      #chatInput
+      [(ngModel)]="editorMessage"
+      (keyup.enter)="sendMessage()"
+      (focus)="focus()"
+      placeholder="Type message"></ion-textarea>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button clear ion-only item-right>
+        <ion-icon name="send" (click)="sendMessage()"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<emojipicker *ngIf="isOpenEmojiPicker"  [(ngModel)]="editorMessage"></emojipicker>
+
+</ion-footer>

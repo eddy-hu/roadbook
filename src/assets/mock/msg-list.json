@@ -1,0 +1,29 @@
+{
+    "array":[
+      {
+        "messageId":"1",
+        "userId":"140000198202211138",
+        "username":"Jack",
+        "userImgUrl":"https://imoocqa.gugujiankong.com/users/59f334ce647eb43028cf9946.jpg",
+        "toUserId":"123321",
+        "toUserName":"Rose",
+        "toUserImgUrl":"http://img.mukewang.com/user/57a322f00001e4ae02560256-40-40.jpg",
+        "time":1511071097000,
+        "message":"Hello, how can I test the chat component?",
+        "status":"success"
+  
+      },
+      {
+        "messageId":"2",
+        "userId":"123321",
+        "username":"Rose",
+        "userImgUrl":"http://img.mukewang.com/user/57a322f00001e4ae02560256-40-40.jpg",
+        "toUserId":"140000198202211138",
+        "toUserName":"Jack",
+        "toUserImgUrl":"https://imoocqa.gugujiankong.com/users/59f334ce647eb43028cf9946.jpg",
+        "time":1511071097000,
+        "message":"Hi, you can send me any messages",
+        "status":"success"
+      }
+    ]
+  }

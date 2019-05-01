@@ -170,6 +170,7 @@ export class AvatarPage extends BaseUI {
     fileTransfer.upload(targetPath, url, options).then(data => {
       if(loading){
         loading.dismiss();
+        loading=null;
       }
       super.showToast(this.toastCtrl, "Uploaded successfully");
       setTimeout(() => {
@@ -178,6 +179,7 @@ export class AvatarPage extends BaseUI {
     },err=>{
       if(loading){
         loading.dismiss();
+        loading=null;
       }
       super.showToast(this.toastCtrl, "Upload failed");
     });

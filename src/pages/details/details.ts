@@ -54,6 +54,7 @@ export class DetailsPage extends BaseUI {
             this.isMyQuestion = (res["OwnUserId"] == val);
             if(loading){
               loading.dismiss();
+              loading=null;
             }
           },
           error => (this.errorMessage = <any>error)
@@ -69,6 +70,7 @@ export class DetailsPage extends BaseUI {
         if (res["Status"] == "OK") {
           if(loading){
             loading.dismiss();
+            loading=null;
           }
           super.showToast(
             this.toastCtrl,

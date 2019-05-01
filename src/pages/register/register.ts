@@ -70,11 +70,13 @@ export class RegisterPage extends BaseUI {
             super.showToast(this.toastCtrl, "Sign up successfully");
             if(loading){
               loading.dismiss();
+              loading=null;
             }
             this.dismiss();
           } else {
             if(loading){
               loading.dismiss();
+              loading=null;
             }
             super.showToast(this.toastCtrl, f["StatusContent"]);
           }

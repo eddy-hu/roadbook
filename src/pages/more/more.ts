@@ -52,6 +52,7 @@ export class MorePage extends BaseUI {
               this.logined = true;
               if(loading){
                 loading.dismiss();
+                loading=null;
               }
             }
           );

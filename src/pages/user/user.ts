@@ -48,6 +48,7 @@ export class UserPage extends BaseUI {
             this.avatar = userinfo["UserHeadface"] + "?" + new Date().valueOf();
             if(loading){
               loading.dismiss();
+              loading=null;
             }
           },
           error => (this.errorMessage = <any>error)
@@ -64,11 +65,13 @@ export class UserPage extends BaseUI {
           if (f["Status"] == "OK") {
             if(loading){
               loading.dismiss();
+              loading=null;
             }
             super.showToast(this.toastCtrl, "Nick name has been updated");
           } else {
             if(loading){
               loading.dismiss();
+              loading=null;
             }
             super.showToast(this.toastCtrl, f["StatusContent"]);
           }

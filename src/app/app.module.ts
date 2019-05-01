@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -13,7 +13,6 @@ import { RegisterPage } from '../pages/register/register';
 import { UserPage } from '../pages/user/user';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HttpModule } from '@angular/http'
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
@@ -37,6 +36,13 @@ import { DetailsPageModule } from '../pages/details/details.module';
 import { DetailsPage } from '../pages/details/details';
 import { AnswerPageModule } from '../pages/answer/answer.module';
 import { AnswerPage } from '../pages/answer/answer';
+import { ChatDetailPageModule } from '../pages/chatdetail/chatdetail.module';
+import { ChatDetailPage } from '../pages/chatdetail/chatdetail';
+import { EmojiProvider } from '../providers/emoji/emoji';
+import { ComponentsModule } from '../components/components.module';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ChatserviceProvider } from '../providers/chatservice/chatservice';
 
 @NgModule({
   declarations: [
@@ -58,6 +64,11 @@ import { AnswerPage } from '../pages/answer/answer';
     DetailsPageModule,
     AnswerPageModule,
     HttpModule,
+    ChatDetailPageModule,
+    ComponentsModule,
+    BrowserModule,
+    CommonModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
   ],
@@ -76,6 +87,7 @@ import { AnswerPage } from '../pages/answer/answer';
     QuestionPage,
     DetailsPage,
     AnswerPage,
+    ChatDetailPage,
   ],
   providers: [
     StatusBar,
@@ -86,6 +98,15 @@ import { AnswerPage } from '../pages/answer/answer';
     File,
     Transfer,
     FilePath,
+    EmojiProvider,
+    ChatserviceProvider,
+    
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA,
   ]
+
+
 })
 export class AppModule {}

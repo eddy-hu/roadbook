@@ -41,6 +41,7 @@ export class DiscoveryPage extends BaseUI {
       this.questions=res;
       if(loading){
         loading.dismiss();
+        loading=null;
       }
     },
     error=>this.errorMessage = <any>error);

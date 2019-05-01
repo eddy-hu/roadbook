@@ -50,6 +50,7 @@ export class HomePage extends BaseUI{
       this.feeds=res;
       if(loading){
         loading.dismiss();
+        loading=null;
       }
     },
     error=>this.errorMessage = <any>error);

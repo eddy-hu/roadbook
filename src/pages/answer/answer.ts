@@ -45,11 +45,13 @@ export class AnswerPage extends BaseUI{
             if (f["Status"] == "OK") {
               if(loading){
                 loading.dismissAll();
+                loading=null;
               }
               this.dismiss();
             } else {
               if(loading){
                 loading.dismissAll();
+                loading=null;
               }
               super.showToast(this.toastCtrl, f["StatusContent"]);
             }
