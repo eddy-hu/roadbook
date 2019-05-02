@@ -42,6 +42,8 @@ export class RestProvider {
 
   private apiUrlSaveFavourite =
     "https://imoocqa.gugujiankong.com/api/question/savefavourite";
+  private apiUrlUserNotifications =
+    "https://imoocqa.gugujiankong.com/api/account/usernotifications";
 
   /**
    *
@@ -154,6 +156,9 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlQuestionList);
   }
 
+  getUserNotifications(userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUserNotifications+"?userid="+userId);
+  }
   /**
    *
    * @Parry
