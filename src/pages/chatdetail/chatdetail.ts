@@ -70,7 +70,40 @@ export class ChatDetailPage {
   }
 
   sendMessage(){
+    if(!this.editorMessage.trim()){
+      return;
+    }
+      const id = Date.now().toString();
+      let messageSend : ChatMessage ={
+        messageId : id,
+        userId: this.userId,
+        username: this.userName,
+        userImgUrl: this.userImgUrl,
+        toUserId: this.chatUserId,
+        time: Date.now(),
+        message: this.editorMessage,
+        status: 'pending'
+      }
+      this.messageList.push(messageSend);
+      this.scrollToBottom();
+      
+      this.editorMessage ='';
+      if(!this.isOpenEmojiPicker){
+        this.messageInput.setFocus();
+      }
+
+      this.chatService.sendMessage(messageSend)
+      .then(()=>{
+        let index  = this.getMessageIndex(id);
+        if(index!==-1){
+          this.messageList[index].status = 'success';
+        }
+      })
     
+  }
+
+  getMessageIndex(id:string){
+    return this.messageList.findIndex(e=>e.messageId===id);
   }
 
   focus(){
@@ -86,4 +119,5 @@ export class ChatDetailPage {
       }
     },400)
   }
+  
 }

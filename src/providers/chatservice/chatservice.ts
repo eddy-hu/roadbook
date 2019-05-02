@@ -46,6 +46,18 @@ export class ChatserviceProvider {
         );
     });
   }
+
+  //mock api  
+  sendMessage(message: ChatMessage){
+    return new Promise(resolve => setTimeout(() => {
+      resolve(message)
+    },Math.random()*1000 ) )
+    .then(()=>{
+      
+    })
+
+    
+  }
   
 
 }
